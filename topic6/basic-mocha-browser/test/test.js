@@ -1,5 +1,5 @@
 var expect = chai.expect;
-
+var assert = chai.assert;
 // note - in these examples we are doing all setup and any teardown in each 
 // test case itself. There are more elegant ways to do this -- see 
 // Mocha's "hooks" https://mochajs.org/#hooks
@@ -19,7 +19,9 @@ describe('Person', function() {
       let p = new Person('John', 'Smith', 'Kentucky');
       p.adoptPet(dog);
       p.adoptPet(cat);
-      expect(p.pets).to.have.lengthOf(2); 
+      expect(p.pets).to.have.lengthOf(2);
+      // just putting this in here to show how to test for type, if you want
+      expect(p.pets[0]).to.be.an.instanceof(Pet);
     });
 
     it('should reject tigers', function() {
